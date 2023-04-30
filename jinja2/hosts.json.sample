@@ -1,0 +1,34 @@
+{
+  "docker_host": {
+    "DOCKER_HOST_IP_ADDRESS": "192.168.1.222",
+    "HOST_NETMASK": "255.255.255.0",
+    "HOST_NETMASK_CIDR": "24",
+    "HOST_GATEWAY": "192.168.1.1",
+    "DHCP_RANGE_START": "192.168.1.101",
+    "DHCP_RANGE_END": "192.168.1.200",
+    "DNS_SERVER_1": "8.8.8.8",
+    "DNS_SERVER_2": "8.8.4.4"
+  },
+  "pxe_clients": [
+    {
+      "HOST_NAME": "client1",
+      "HOST_IP_ADDRESS": "192.168.1.101",
+      "HOST_MAC_ADDRESS": "xx:xx:xx:xx:xx:xx",
+      "USER_FULLNAME": "UbuntuUser",
+      "USER_NAME": "u_user",
+      "PASSWD_HASH": "openssl passwd -6 -salt <any-salt>",
+      "SSH_AUTHORIZED_KEY": "curl -sSL https://github.com/<github-username>.keys",
+      "BOOT_DISK_SERIAL": "WDC_WDS100T2B0C-00PXH0_0000XXXX0000"
+    },
+    {
+      "HOST_NAME": "client2",
+      "HOST_IP_ADDRESS": "192.168.1.102",
+      "HOST_MAC_ADDRESS": "yy:yy:yy:yy:yy:yy",
+      "USER_FULLNAME": "UbuntuUser",
+      "USER_NAME": "u_user",
+      "PASSWD_HASH": "openssl passwd -6 -salt <any-salt>",
+      "SSH_AUTHORIZED_KEY": "curl -sSL https://github.com/<github-username>.keys",
+      "BOOT_DISK_SERIAL": "WDC*"
+    }
+  ]
+}

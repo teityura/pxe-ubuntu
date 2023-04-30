@@ -1,0 +1,25 @@
+# [DHCP]
+dhcp-range={{ docker_host.DHCP_RANGE_START }},{{ docker_host.DHCP_RANGE_END }}
+dhcp-option=3,{{ docker_host.HOST_GATEWAY }}
+log-dhcp
+
+# [DNS]
+## Disable DNS server
+port=0
+## Passing DNS server addresses
+dhcp-option=6,{{ docker_host.DNS_SERVER_1 }},{{ docker_host.DNS_SERVER_2 }}
+
+# Legacy boot
+dhcp-boot=legacy/pxelinux.0
+
+# UEFI boot
+dhcp-match=set:efi-x86_64,option:client-arch,7
+dhcp-boot=tag:efi-x86_64,shimx64.efi
+
+# Provide network boot option called "Network Boot"
+pxe-service=x86PC,"Network Boot",shimx64.efi
+
+# [TFTP]
+enable-tftp
+tftp-root=/srv/tftp
+

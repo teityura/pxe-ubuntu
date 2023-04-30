@@ -1,0 +1,45 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: {{ pxe_client.HOST_NAME }}
+    password: '{{ pxe_client.PASSWD_HASH }}'
+    realname: {{ pxe_client.USER_FULLNAME }}
+    username: {{ pxe_client.USER_NAME }}
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: jp
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    ethernets:
+      enp0s31f6:
+        addresses:
+          - {{ pxe_client.HOST_IP_ADDRESS }}/{{ docker_host.HOST_NETMASK_CIDR }}
+        critical: true
+        dhcp-identifier: mac
+        nameservers:
+          addresses:
+            - {{ docker_host.DNS_SERVER_1 }}
+            - {{ docker_host.DNS_SERVER_2 }}
+          search: []
+        routes:
+          - to: default
+            via: {{ docker_host.HOST_GATEWAY }}
+    version: 2
+  source:
+    id: ubuntu-server-minimal
+    search_drivers: false
+  ssh:
+    allow-pw: false
+    authorized-keys:
+      - '{{ pxe_client.SSH_AUTHORIZED_KEY }}'
+    install-server: true
+  storage:
+    layout:
+      name: lvm
+      match:
+        serial: '{{ pxe_client.BOOT_DISK_SERIAL }}'
+
