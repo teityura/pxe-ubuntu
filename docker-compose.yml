@@ -4,10 +4,10 @@ services:
   dnsmasq:
     build:
       # [Copy ISO Image from docker-host]
-      context: .
-      dockerfile: dnsmasq/Dockerfile
+      # context: .
+      # dockerfile: dnsmasq/Dockerfile
       # [Download ISO Image from ubuntu.com]
-      # context: ./dnsmasq/
+      context: ./dnsmasq/
       args:
         UBUNTU_CODENAME: ${UBUNTU_CODENAME}
     image: pxe-ubuntu/dnsmasq:${UBUNTU_CODENAME}
@@ -22,10 +22,10 @@ services:
   httpd:
     build:
       # [Copy ISO Image from docker-host]
-      context: .
-      dockerfile: ./httpd/Dockerfile
+      # context: .
+      # dockerfile: ./httpd/Dockerfile
       # [Download ISO Image from ubuntu.com]
-      # context: ./httpd/
+      context: ./httpd/
       args:
         UBUNTU_CODENAME: ${UBUNTU_CODENAME}
     image: pxe-ubuntu/httpd:${UBUNTU_CODENAME}
