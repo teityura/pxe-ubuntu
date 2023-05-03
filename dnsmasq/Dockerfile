@@ -12,7 +12,7 @@ RUN set -x && apt-get update && apt-get install -y \
     pxelinux
 
 # [Copy ISO Image from docker-host]
-# COPY tmp-iso/${UBUNTU_CODENAME}-live-server-amd64.iso /tmp/ubuntu-live-server-amd64.iso
+# COPY isos/${UBUNTU_CODENAME}-live-server-amd64.iso /tmp/ubuntu-live-server-amd64.iso
 
 # [Download ISO Image from ubuntu.com]
 RUN wget -O /tmp/ubuntu-live-server-amd64.iso \

@@ -1,5 +1,5 @@
-tmp-iso/*.iso
-!tmp-iso/*.iso.sample
+isos/*.iso
+!isos/*.iso.sample
 jinja2/hosts.json
 !jinja2/hosts.json.sample
 jinja2/templates_generated/

@@ -6,7 +6,7 @@ RUN set -x && \
   apk add --no-cache apache2
 
 # [Copy ISO Image from docker-host]
-# COPY tmp-iso/${UBUNTU_CODENAME}-live-server-amd64.iso /tmp/ubuntu-live-server-amd64.iso
+# COPY isos/${UBUNTU_CODENAME}-live-server-amd64.iso /tmp/ubuntu-live-server-amd64.iso
 # RUN mkdir -p /srv/httpd/iso && \
 #     mv /tmp/ubuntu-live-server-amd64.iso /srv/httpd/iso/ubuntu-live-server-amd64.iso
 
