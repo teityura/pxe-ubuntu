@@ -21,6 +21,8 @@ def main():
         ("templates/dnsmasq/default.j2", Path("templates_generated/dnsmasq/default")),
         ("templates/dnsmasq/grub.cfg.j2", Path("templates_generated/dnsmasq/grub.cfg")),
         ("templates/dnsmasq/pxe-dnsmasq.conf.j2", Path("templates_generated/dnsmasq/pxe-dnsmasq.conf")),
+        ("templates/dnsmasq/usb-default.j2", Path("templates_generated/dnsmasq/usb-default")),
+        ("templates/dnsmasq/usb-grub.cfg.j2", Path("templates_generated/dnsmasq/usb-grub.cfg")),
     ]
     for template_file_name, output_path in templates:
         template = env.get_template(template_file_name)
