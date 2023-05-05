@@ -30,7 +30,7 @@ export linux_gfx_mode
 {% for client in pxe_clients %}
 menuentry 'Ubuntu - {{ client.HOST_NAME }} (Autoinstall -- USB)' {
   gfxmode $linux_gfx_mode
-  linux /casper/vmlinuz autoinstall "ds=nocloud-net;s=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/autoinstall/{{ client.HOST_NAME }}/" ip=dhcp netmask={{ docker_host.HOST_NETMASK }} gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} only-ubiquity ---
+  linux /casper/vmlinuz autoinstall "ds=nocloud-net;s=http://{{ docker_host.HOST_IP_ADDRESS }}/autoinstall/{{ client.HOST_NAME }}/" ip=dhcp netmask={{ docker_host.HOST_NETMASK }} gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} only-ubiquity ---
   initrd /casper/initrd
 }
 
@@ -39,5 +39,4 @@ menuentry 'Ubuntu - {{ client.HOST_NAME }} (Manual -- USB)' {
   linux /casper/vmlinuz ip=dhcp netmask={{ docker_host.HOST_NETMASK }} gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} only-ubiquity ---
   initrd /casper/initrd
 }
-
 {% endfor %}

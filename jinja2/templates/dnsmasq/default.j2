@@ -5,8 +5,8 @@ label {{ client.HOST_NAME }}_autoinstall
   kernel /casper/vmlinuz
   initrd /casper/initrd
   append autoinstall ip=dhcp \
-    url=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso \
-    ds=nocloud-net;s=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/autoinstall/autoinstall/{{ client.HOST_NAME }}/ \
+    url=http://{{ docker_host.HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso \
+    ds=nocloud-net;s=http://{{ docker_host.HOST_IP_ADDRESS }}/autoinstall/autoinstall/{{ client.HOST_NAME }}/ \
     ip=dhcp netmask={{ docker_host.HOST_NETMASK }} \
     gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} ---
 
@@ -14,8 +14,7 @@ label {{ client.HOST_NAME }}_manual
   kernel /casper/vmlinuz
   initrd /casper/initrd
   append ip=dhcp \
-    url=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso \
+    url=http://{{ docker_host.HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso \
     ip=dhcp netmask={{ docker_host.HOST_NETMASK }} \
     gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} ---
-
 {% endfor %}

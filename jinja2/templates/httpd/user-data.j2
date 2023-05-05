@@ -15,7 +15,14 @@ autoinstall:
   locale: en_US.UTF-8
   network:
     ethernets:
-      enp0s31f6:
+      id0:
+        {%- if pxe_client.HOST_MAC_ADDRESS %}
+        match:
+          macaddress: '{{ pxe_client.HOST_MAC_ADDRESS }}'
+        {%- else %}
+        match:
+          name: 'en*'
+        {%- endif %}
         addresses:
           - {{ pxe_client.HOST_IP_ADDRESS }}/{{ docker_host.HOST_NETMASK_CIDR }}
         critical: true
@@ -40,6 +47,8 @@ autoinstall:
   storage:
     layout:
       name: lvm
+      {%- if pxe_client.BOOT_DISK_SERIAL %}
       match:
         serial: '{{ pxe_client.BOOT_DISK_SERIAL }}'
+      {%- endif %}
 

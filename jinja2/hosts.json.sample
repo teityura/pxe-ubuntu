@@ -1,6 +1,6 @@
 {
   "docker_host": {
-    "DOCKER_HOST_IP_ADDRESS": "192.168.1.222",
+    "HOST_IP_ADDRESS": "192.168.1.222",
     "HOST_NETMASK": "255.255.255.0",
     "HOST_NETMASK_CIDR": "24",
     "HOST_GATEWAY": "192.168.1.1",
@@ -18,7 +18,7 @@
       "USER_NAME": "u_user",
       "PASSWD_HASH": "openssl passwd -6 -salt <any-salt>",
       "SSH_AUTHORIZED_KEY": "curl -sSL https://github.com/<github-username>.keys",
-      "BOOT_DISK_SERIAL": "WDC_WDS100T2B0C-00PXH0_0000XXXX0000"
+      "BOOT_DISK_SERIAL": "udevadm info --name=/dev/nvme0n1 | grep -e ID_SERIAL -e ID_MODEL"
     },
     {
       "HOST_NAME": "client2",
@@ -28,7 +28,7 @@
       "USER_NAME": "u_user",
       "PASSWD_HASH": "openssl passwd -6 -salt <any-salt>",
       "SSH_AUTHORIZED_KEY": "curl -sSL https://github.com/<github-username>.keys",
-      "BOOT_DISK_SERIAL": "WDC*"
+      "BOOT_DISK_SERIAL": "WDC_WDS100T2B0C-00PXH0_2017BOTW0303 or WDC* or *WDS100T2B0C* or *2017BOTW0303"
     }
   ]
 }

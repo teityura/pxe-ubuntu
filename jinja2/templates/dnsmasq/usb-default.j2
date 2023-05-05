@@ -5,7 +5,7 @@ label {{ client.HOST_NAME }}_autoinstall_usb
   kernel /casper/vmlinuz
   initrd /casper/initrd
   append autoinstall ip=dhcp \
-    ds=nocloud-net;s=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/autoinstall/autoinstall/{{ client.HOST_NAME }}/ \
+    ds=nocloud-net;s=http://{{ docker_host.HOST_IP_ADDRESS }}/autoinstall/autoinstall/{{ client.HOST_NAME }}/ \
     ip=dhcp netmask={{ docker_host.HOST_NETMASK }} \
     gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} ---
 
@@ -15,5 +15,4 @@ label {{ client.HOST_NAME }}_manual_usb
   append ip=dhcp \
     ip=dhcp netmask={{ docker_host.HOST_NETMASK }} \
     gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} ---
-
 {% endfor %}

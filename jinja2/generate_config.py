@@ -14,7 +14,7 @@ def main():
         docker_host = data["docker_host"]
         pxe_clients = data["pxe_clients"]
 
-    env = Environment(loader=FileSystemLoader("."))
+    env = Environment(loader=FileSystemLoader(".", encoding='utf8'))
 
     # conf ファイルを生成する
     templates = [
