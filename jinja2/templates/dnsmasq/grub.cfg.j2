@@ -24,13 +24,11 @@ function gfxmode {
 }
 
 set linux_gfx_mode=keep
-
 export linux_gfx_mode
-
 {% for client in pxe_clients %}
 menuentry 'Ubuntu - {{ client.HOST_NAME }} (Autoinstall)' {
   gfxmode $linux_gfx_mode
-  linux /casper/vmlinuz autoinstall url=http://{{ docker_host.HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso "ds=nocloud-net;s=http://{{ docker_host.DOCKER_HOST_IP_ADDRESS }}/autoinstall/{{ client.HOST_NAME }}/" ip=dhcp netmask={{ docker_host.HOST_NETMASK }} gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} only-ubiquity ---
+  linux /casper/vmlinuz autoinstall url=http://{{ docker_host.HOST_IP_ADDRESS }}/iso/ubuntu-live-server-amd64.iso "ds=nocloud-net;s=http://{{ docker_host.HOST_IP_ADDRESS }}/autoinstall/{{ client.HOST_NAME }}/" ip=dhcp netmask={{ docker_host.HOST_NETMASK }} gateway={{ docker_host.HOST_GATEWAY }} nameserver={{ docker_host.DNS_SERVER_1 }} only-ubiquity ---
   initrd /casper/initrd
 }
 

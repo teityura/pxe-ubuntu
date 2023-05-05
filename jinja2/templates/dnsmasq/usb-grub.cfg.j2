@@ -24,9 +24,7 @@ function gfxmode {
 }
 
 set linux_gfx_mode=keep
-
 export linux_gfx_mode
-
 {% for client in pxe_clients %}
 menuentry 'Ubuntu - {{ client.HOST_NAME }} (Autoinstall -- USB)' {
   gfxmode $linux_gfx_mode

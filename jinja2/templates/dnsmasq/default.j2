@@ -1,5 +1,4 @@
-default {{ pxe_clients[0].HOST_NAME }}
-
+default {{ pxe_clients[0].HOST_NAME }}_autoinstall
 {% for client in pxe_clients %}
 label {{ client.HOST_NAME }}_autoinstall
   kernel /casper/vmlinuz
