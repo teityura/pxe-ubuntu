@@ -191,12 +191,12 @@ httpd/autoinstall/
 
 ## USBブート with PXE
 
-マザーボードやNIC が PXEブートに対応していない場合でも、  
+マザーボード や NIC が PXEブート に対応していない場合でも、  
 USBブートメディア を作成し `/boot/grub/grub.cfg` を編集することで、  
-USBブートメディア から Linuxカーネル を起動させることができるようになり、  
-ローカルのPXEサーバから Kickstart や OSイメージ を取得することができます
+USBブートメディア から Linuxカーネル を起動させることができて、  
+ローカルの PXEサーバ から Kickstart や OSイメージ を取得できます
 
-`generate_config.py` を実行すると、USBブート用の設定ファイルが生成されます
+`generate_config.py` を実行すると、USBブート用に usb-boot/usb-grub.cfg を生成します
 
 ```md
 ## 手順
