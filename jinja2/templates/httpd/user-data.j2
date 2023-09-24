@@ -1,6 +1,9 @@
 #cloud-config
 autoinstall:
   version: 1
+  early-commands:
+    - lvdisplay -c | awk -F ":" '{print $1}' | xargs -r lvremove -f
+    - vgdisplay -c | awk -F ":" '{print $1}' | xargs -r vgremove -f
   identity:
     hostname: {{ pxe_client.HOST_NAME }}
     password: '{{ pxe_client.PASSWD_HASH }}'
